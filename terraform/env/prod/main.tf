@@ -4,6 +4,7 @@ module "aws_prod" {
   regiao_aws = "us-east-1"
   chave = "prod-key"
   sg_name = "grupo-prod"
+  env_name = "Production"
 }
 
 output "IP" {

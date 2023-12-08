@@ -1,6 +1,6 @@
 resource "aws_security_group" "grupo-dev" {
-  name = "grupo-dev"
-  description = "Grupo de Dev"
+  name = var.sg_name
+  description = "Grupo de ${var.env_name}"
   
   ingress{
     cidr_blocks = ["0.0.0.0/0"]
@@ -19,6 +19,6 @@ resource "aws_security_group" "grupo-dev" {
   }
   
   tags = {
-    Name = "group-dev"
+    Name = var.sg_name
   }
 }

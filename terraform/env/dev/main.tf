@@ -4,6 +4,7 @@ module "aws_dev" {
   instancia = "t2.micro"
   chave = "dev-key"
   sg_name = "grupo-prod"
+  env_name = "Development"
 }
 
 output "ip" {
