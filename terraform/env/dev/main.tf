@@ -3,7 +3,7 @@ module "aws_dev" {
   regiao_aws = "us-east-1"
   instancia = "t2.micro"
   chave = "dev-key"
-  sg_name = "grupo-prod"
+  sg_name = "grupo-dev"
   env_name = "Development"
 }
 
