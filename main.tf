@@ -15,14 +15,14 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0fc5d935ebf8bc3bc"
+  ami           = "ami-0230bd60aa48260c6"
   instance_type = "t2.micro"
   key_name = "iac-alura"
   user_data = <<-EOF
         #!/bin/bash
         cd /home/ubuntu
-        echo "<h1>Hello world!</h1>\n<p>Created by Terraform.</p>" > index.html
-        norup busybox httpd -f -p 8080 &
+        echo "<h1>Hello world!</h1></br><p>Created by Terraform.</p>" > index.html
+        nohup busybox httpd -f -p 8080 &
   EOF
 
   tags = {
