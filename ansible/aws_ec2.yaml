@@ -11,4 +11,4 @@ hostnames:
 #     key: placement.availability_zone
 
 groups:
-  ubuntu: "'ubuntu' in tags.OS"
+  debian: "'debian' in tags.OS"
