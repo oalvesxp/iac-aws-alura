@@ -17,3 +17,6 @@
       - name: Criando a venv
         pip:
           virtualenv: /home/ubuntu/tcc/venv
+          name:
+            - django
+            - djangorestframework
