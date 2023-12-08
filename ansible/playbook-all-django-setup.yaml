@@ -13,3 +13,7 @@
         loop:
           - python3
           - virtualenv
+      
+      - name: Criando a venv
+        pip:
+          virtualenv: /home/ubuntu/tcc/venv
