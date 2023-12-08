@@ -14,9 +14,13 @@
           - python3
           - virtualenv
       
-      - name: Criando a venv
+      - name: Criando a venv e instalando dependências
         pip:
           virtualenv: /home/ubuntu/tcc/venv
           name:
             - django
             - djangorestframework
+
+      - name: Iniciando o projeto
+        shell: 'source /home/ubuntu/tcc/venv/bin/activate; 
+                django-admin startproject setup /home/ubuntu/tcc/.'
