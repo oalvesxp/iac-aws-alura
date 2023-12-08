@@ -1,2 +1,2 @@
-# terraform-aws-iac
-Provisionando recursos de infraestrutura na AWS.
+# Terrafomr AWS - IaC
+Infraestrutura como Código: Provisionando recursos de infraestrutura na AWS.
