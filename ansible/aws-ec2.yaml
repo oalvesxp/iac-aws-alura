@@ -11,3 +11,4 @@ hostnames:
 
 groups:
   ubuntu: "'ubuntu' in tags.OS"
+  
