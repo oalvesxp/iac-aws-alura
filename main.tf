@@ -18,6 +18,12 @@ resource "aws_instance" "app_server" {
   ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.micro"
   key_name = "iac-alura"
+  user_data = <<-EOF
+        #!/bin/bash
+        cd /home/ubuntu
+        echo "<h1>Hello world!</h1>\n<p>Created by Terraform.</p>" > index.html
+        norup busybox httpd -f -p 8080 &
+  EOF
 
   tags = {
     Name = "vm-p-wp01"
