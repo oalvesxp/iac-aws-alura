@@ -6,10 +6,6 @@ regions:
 hostnames:
   - ip-address
 
-# key_groups:
-#   - prefix: az
-#     key: placement.availability_zone
-
 groups:
-  debian: "'debian' in tags.OS"
-  ubuntu: "'ubuntu' in tags.OS"
+  dev: "'dev' in tags.Env"
+  prod : "'prod' in tags.Env"

@@ -1,0 +1,4 @@
+## Projeto ##
+root_dir: $HOME/tcc/
+venv_dir: $HOME/tcc/venv
+
