@@ -1,0 +1,7 @@
+---
+  - hosts: linux
+    gather_facts: False
+
+    tasks:
+      - name: ping dynamic inventory
+        ping:
