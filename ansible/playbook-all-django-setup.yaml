@@ -1,0 +1,11 @@
+---
+  - hosts: ubuntu
+    gather_facts: True
+
+    tasks:
+      - name:
+        apt: name={{ item }} state=present
+        become: yes
+        loop:
+          - python3
+          - virtualenv
