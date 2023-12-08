@@ -1,6 +1,6 @@
 module "aws_dev" {
   source = "../../infra"
-  instance = "t2.micro"
-  region_aws = "us-east-1"
-  key_ssh = "dev-key"
+  regiao_aws = "us-east-1"
+  instancia = "t2.micro"
+  chave = "dev-key"
 }
