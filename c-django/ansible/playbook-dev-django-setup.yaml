@@ -1,5 +1,5 @@
 ---
-  - hosts: ubuntu
+  - hosts: dev
     gather_facts: True
 
     roles:

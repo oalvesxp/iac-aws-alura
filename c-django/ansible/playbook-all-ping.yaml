@@ -1,5 +1,5 @@
 ---
-  - hosts: linux
+  - hosts: all
     gather_facts: False
 
     tasks:
