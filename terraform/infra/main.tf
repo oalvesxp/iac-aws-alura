@@ -17,7 +17,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.micro"
-  key_name = "iac-alura"
+  key_name = "dev-key"
 #   user_data = <<-EOF
 #         #!/bin/bash
 #         cd /home/ubuntu
@@ -29,4 +29,9 @@ resource "aws_instance" "app_server" {
     Name = "vm-django"
     OS = "ubuntu"
   }
+}
+
+resource "aws_key_pair" "chaveSSH" {
+  key_name = dev-key
+  public_key = file("./ssh_keys/dev-key.pub")
 }
