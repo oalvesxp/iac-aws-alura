@@ -1,0 +1,13 @@
+plugin: aws-ec2
+regions:
+  - us-east-1
+
+hostnames:
+  - ip-adress
+
+# keyed_groups:
+#   - prefix: az
+#     key: placement.availability_zone
+
+groups:
+  ubuntu: "'ubuntu' in tags.OS"
