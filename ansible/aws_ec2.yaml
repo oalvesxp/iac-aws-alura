@@ -6,6 +6,9 @@ regions:
 hostnames:
   - ip-address
 
-key_groups:
-  - prefix: az
-    key: placement.availability_zone
+# key_groups:
+#   - prefix: az
+#     key: placement.availability_zone
+
+groups:
+  ubuntu: "'ubuntu' in tags.OS"
