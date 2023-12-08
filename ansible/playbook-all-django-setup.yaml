@@ -32,3 +32,8 @@
           backrefs: yes
         tags:
           - hosts
+      
+      - name: Subindo o ambiente
+        shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py runserver 0.0.0.0:8000'
+        tags:
+          - runserver
