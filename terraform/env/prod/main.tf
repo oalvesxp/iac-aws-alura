@@ -1,4 +1,4 @@
-module "aws-prod" {
+module "aws_prod" {
   source = "../../infra"
   instancia = "t2.micro"
   regiao_aws = "us-east-1"
@@ -6,5 +6,5 @@ module "aws-prod" {
 }
 
 output "IP" {
-  value = module.aws-prod.IP_publico
+  value = module.aws-prod.ip_publico
 }
