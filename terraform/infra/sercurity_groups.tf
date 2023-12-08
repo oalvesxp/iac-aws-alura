@@ -1,4 +1,4 @@
-resource "aws_security_group" "grupo-dev" {
+resource "aws_security_group" "grupo-seguranca" {
   name = var.sg_name
   description = "Grupo de ${var.env_name}"
   
