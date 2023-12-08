@@ -2,7 +2,7 @@ variable "region_aws" {
   type = string
 }
 
-variable "key" {
+variable "key_ssh" {
   type = string
 }
 

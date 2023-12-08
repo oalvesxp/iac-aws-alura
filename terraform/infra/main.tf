@@ -10,21 +10,14 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
+  region  = var.region_aws
   profile = "tf-demo-aws"
 }
 
 resource "aws_instance" "app_server" {
   ami           = "ami-0fc5d935ebf8bc3bc"
-  instance_type = "t2.micro"
-  key_name = "dev-key"
-#   user_data = <<-EOF
-#         #!/bin/bash
-#         cd /home/ubuntu
-#         echo "<h1>Hello world!</h1></br><p>Created by Terraform.</p>" > index.html
-#         nohup busybox httpd -f -p 8080 &
-#   EOF
-
+  instance_type = var.instance
+  key_name = var.key_ssh
   tags = {
     Name = "vm-django"
     OS = "ubuntu"
@@ -32,6 +25,6 @@ resource "aws_instance" "app_server" {
 }
 
 resource "aws_key_pair" "chaveSSH" {
-  key_name = dev-key
-  public_key = file("./ssh_keys/dev-key.pub")
+  key_name = var.key_ssh
+  public_key = file("${var.key_ssh}.pub")
 }
