@@ -4,3 +4,7 @@ module "aws_dev" {
   instancia = "t2.micro"
   chave = "dev-key"
 }
+
+output "ip" {
+  value = module.aws_dev.ip_publico
+}
