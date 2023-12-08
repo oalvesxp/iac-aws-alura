@@ -19,8 +19,9 @@ resource "aws_instance" "app_server" {
   instance_type = var.instancia
   key_name = var.chave
   tags = {
-    Name = "vm-django"
+    Name = "vm-dev-django"
     OS = "ubuntu"
+    Env = "dev"
   }
 }
 
