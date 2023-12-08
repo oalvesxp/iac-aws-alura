@@ -1,0 +1,43 @@
+---
+  - hosts: ubuntu
+    gather_facts: True
+
+    tasks:
+      - name: Atualizando o apt-cache
+        apt:  update_cache=yes cache_valid_time=3600
+        become: yes
+
+      - name: Instalando o Python3
+        apt: name={{ item }} state=present
+        become: yes
+        loop:
+          - python3
+          - virtualenv
+
+      - name: Git clone
+        ansible.builtin.git:
+          repo: https://github.com/guilhermeonrails/clientes-leo-api.git
+          dest: /home/ubuntu/tcc
+          version: master
+          force: yes
+      
+      - name: Criando a venv e instalando dependências
+        pip:
+          virtualenv: /home/ubuntu/tcc/venv
+          requirements: /home/ubuntu/tcc/requirements.txt
+
+      - name: Alterando o hosts settings
+        lineinfile:
+          path: /home/ubuntu/tcc/setup/settings.py
+          regexp: 'ALLOWED_HOSTS'
+          line: "ALLOWED_HOSTS = ['*']"
+          backrefs: yes
+
+      - name: Configurando o bando de dados
+        shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py migrate'
+
+      - name: Carregando os dados
+        shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/manage.py loaddata clientes.json'
+
+      - name: Iniciando o ambiente
+        shell: '. /home/ubuntu/tcc/venv/bin/activate; nohup python /home/ubuntu/tcc/manage.py runserver 0.0.0.0:8000 &'
