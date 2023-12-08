@@ -12,3 +12,4 @@ hostnames:
 
 groups:
   debian: "'debian' in tags.OS"
+  ubuntu: "'ubuntu' in tags.OS"

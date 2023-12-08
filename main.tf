@@ -15,7 +15,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0230bd60aa48260c6"
+  ami           = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.micro"
   key_name = "iac-alura"
 #   user_data = <<-EOF

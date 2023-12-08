@@ -1,4 +1,7 @@
 [debian]
 
+[ubuntu]
+
 [linux:children]
 debian
+ubuntu
