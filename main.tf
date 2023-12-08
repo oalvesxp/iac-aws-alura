@@ -26,7 +26,7 @@ resource "aws_instance" "app_server" {
 #   EOF
 
   tags = {
-    Name = "vm-p-wp01"
+    Name = "vm-django"
     OS = "ubuntu"
   }
 }
