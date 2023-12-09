@@ -12,6 +12,6 @@ module "aws_prod" {
   maximo = 3
 }
 
-output "IP" {
-  value = module.aws_prod.ip_publico
-}
+# output "IP" {
+#   value = module.aws_prod.ip_publico
+# }
