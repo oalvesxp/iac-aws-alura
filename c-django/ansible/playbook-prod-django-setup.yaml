@@ -1,5 +1,5 @@
 ---
-  - hosts: ubuntu
+  - hosts: prod
     gather_facts: True
 
     roles:

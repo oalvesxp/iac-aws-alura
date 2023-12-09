@@ -5,6 +5,7 @@ module "aws_dev" {
   chave = "dev-key"
   sg_name = "grupo-dev"
   env_name = "Development"
+  name = "dev"
 }
 
 output "ip" {

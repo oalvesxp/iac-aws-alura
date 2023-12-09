@@ -17,3 +17,7 @@ variable "sg_name" {
 variable "env_name" {
   type = string
 }
+
+variable "name" {
+  type = string
+}

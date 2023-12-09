@@ -5,6 +5,7 @@ module "aws_prod" {
   chave = "prod-key"
   sg_name = "grupo-prod"
   env_name = "Production"
+  name = "prod"
 }
 
 output "IP" {
