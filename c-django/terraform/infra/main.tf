@@ -14,13 +14,23 @@ provider "aws" {
   profile = "tf-demo-aws"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-0fc5d935ebf8bc3bc"
-  instance_type = var.instancia
-  key_name = var.chave
+# resource "aws_instance" "app_server" {
+#   ami           = "ami-0fc5d935ebf8bc3bc"
+#   instance_type = var.instancia
+#   key_name = var.chave
+#   tags = {
+#     Name = "vm-${var.name}-app00"
+#     Env = "dev"
+#   }
+# }
+
+resource "aws_launch_template" "maquina" {
+  image_id        = "ami-0fc5d935ebf8bc3bc"
+  instance_type   = var.instancia
+  key_name        = var.chave
   tags = {
-    Name = "vm-${var.name}-app00"
-    Env = "dev"
+    Name  = "vm-${var.name}-app00"
+    Env   = var.name
   }
 }
 
