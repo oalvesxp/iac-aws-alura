@@ -14,16 +14,6 @@ provider "aws" {
   profile = "tf-demo-aws"
 }
 
-# resource "aws_instance" "app_server" {
-#   ami           = "ami-0fc5d935ebf8bc3bc"
-#   instance_type = var.instancia
-#   key_name = var.chave
-#   tags = {
-#     Name = "vm-${var.name}-app00"
-#     Env = "dev"
-#   }
-# }
-
 resource "aws_launch_template" "maquina" {
   image_id        = "ami-0fc5d935ebf8bc3bc"
   instance_type   = var.instancia
@@ -35,7 +25,7 @@ resource "aws_launch_template" "maquina" {
   }
 
   security_group_names = [ var.sg_name ]
-  user_data = var.producao ? ("playbook-prod-setup.sh") : ""
+  user_data = var.producao ? filebase64("playbook-prod-setup.sh") : ""
 }
 
 resource "aws_key_pair" "chaveSSH" {
