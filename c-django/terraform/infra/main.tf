@@ -56,12 +56,39 @@ resource "aws_autoscaling_group" "grupo" {
     id = aws_launch_template.maquina.id
     version = "$Latest"
   }
+  target_group_arns = [ aws_lb_target_group.grupoLB.arn ]
 }
 
 resource "aws_default_subnet" "subnet_1" {
   availability_zone = "${var.regiao_aws}a"
 }
 
-resource "aws_default_subnet" "subnet_1" {
+resource "aws_default_subnet" "subnet_2" {
   availability_zone = "${var.regiao_aws}b"
+}
+
+resource "aws_lb" "loadBalancer" {
+  internal = false
+  subnets = [ aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id ]
+}
+
+resource "aws_default_vpc" "default" {
+  
+}
+
+resource "aws_lb_target_group" "grupoLB" {
+  name = "grupoLB"
+  port = "8000"
+  protocol = "HTTP"
+  vpc_id = aws_default_vpc.default.id
+}
+
+resource "aws_lb_listener" "entradaLB" {
+  load_balancer_arn = aws_lb.loadBalancer.arn
+  port = "8000"
+  protocol = "HTTP"
+  default_action {
+    type = "forward"
+    target_group_arn = aws_lb_target_group.grupoLB.arn
+  }
 }
