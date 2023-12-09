@@ -1,26 +1,26 @@
 ---
   - name: Criando a venv e instalando dependências
     pip:
-      virtualenv: /home/ubuntu/tcc/venv
+      virtualenv: '{{ venv_dir }}'
       name:
         - django
         - djangorestframework
   
   - name: Verificando a existência do Projeto
     stat:
-      path: /home/ubuntu/tcc/setup/settings.py
+      path: '{{ root_dir }}/setup/settings.py'
     register: projeto
   
   - name: Iniciando o projeto
-    shell: '. /home/ubuntu/tcc/venv/bin/activate; django-admin startproject setup /home/ubuntu/tcc/'
+    shell: '. {{ venv_dir }}/bin/activate; django-admin startproject setup {{ root_dir }}'
     when: not projeto.stat.exists
   
   - name: Alterando o hosts no settings.py
     lineinfile:
-      path: /home/ubuntu/tcc/setup/settings.py
+      path: '{{ root_dir }}/setup/settings.py'
       regexp: 'ALLOWED_HOSTS'
       line: "ALLOWED_HOSTS = ['*']"
       backrefs: yes
   
   - name: Iniciando o ambiente
-    shell: '. /home/ubuntu/tcc/venv/bin/activate; nohup python /home/ubuntu/tcc/manage.py runserver 0.0.0.0:8000 &'
+    shell: '. {{ venv_dir }}/bin/activate; nohup python {{ root_dir }}/manage.py runserver 0.0.0.0:8000 &'
