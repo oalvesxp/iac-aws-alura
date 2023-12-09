@@ -1,0 +1,7 @@
+---
+  - name: Git clone
+    ansible.builtin.git:
+      repo: https://github.com/guilhermeonrails/clientes-leo-api.git
+      dest: '{{ root_dir }}'
+      version: master
+      force: yes

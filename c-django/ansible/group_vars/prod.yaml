@@ -1,3 +1,0 @@
-ansible_ssh_private_key_file: /home/iac-user/repo/iac-aws-alura/terraform/env/dev/dev-key
-ansible_ssh_user: ubuntu
-ansible_ssh_common_args: '-o StrictHostKeyChecking=no'

@@ -1,1 +1,21 @@
 ---
+  - name: Criando a venv e instalando dependências
+    pip:
+      virtualenv: '{{ venv_dir }}'
+      requirements: '{{ root_dir }}/requirements.txt'
+
+  - name: Alterando o hosts settings
+    lineinfile:
+      path: '{{ root_dir }}/setup/settings.py'
+      regexp: 'ALLOWED_HOSTS'
+      line: "ALLOWED_HOSTS = ['*']"
+      backrefs: yes
+
+  - name: Configurando o bando de dados
+    shell: '. {{ venv_dir }}/bin/activate; python {{ root_dir }}/manage.py migrate'
+
+  - name: Carregando os dados
+    shell: '. {{ venv_dir }}/bin/activate; python {{ root_dir }}/manage.py loaddata clientes.json'
+
+  - name: Iniciando o ambiente
+    shell: '. {{ venv_dir }}/bin/activate; nohup python {{ root_dir }}/manage.py runserver 0.0.0.0:8000 &'
