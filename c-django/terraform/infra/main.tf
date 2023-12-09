@@ -34,7 +34,7 @@ resource "aws_launch_template" "maquina" {
     Env   = var.name
   }
 
-  security_group_names = [ var.var.sg_name ]
+  security_group_names = [ var.sg_name ]
 }
 
 resource "aws_key_pair" "chaveSSH" {
