@@ -28,10 +28,13 @@ resource "aws_launch_template" "maquina" {
   image_id        = "ami-0fc5d935ebf8bc3bc"
   instance_type   = var.instancia
   key_name        = var.chave
+  
   tags = {
     Name  = "vm-${var.name}-app00"
     Env   = var.name
   }
+
+  security_group_names = [ var.var.sg_name ]
 }
 
 resource "aws_key_pair" "chaveSSH" {
