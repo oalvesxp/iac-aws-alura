@@ -9,7 +9,7 @@ module "aws_prod" {
 
   nomeGrupo = "autoScalingProd"
   minimo = 1
-  maximo = 3
+  maximo = 5
 }
 
 # output "IP" {

@@ -70,6 +70,7 @@ resource "aws_default_subnet" "subnet_2" {
 resource "aws_lb" "loadBalancer" {
   internal = false
   subnets = [ aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id ]
+  security_groups = [ aws_security_group.grupo-seguranca.id ]
 }
 
 resource "aws_default_vpc" "default" {
@@ -90,5 +91,17 @@ resource "aws_lb_listener" "entradaLB" {
   default_action {
     type = "forward"
     target_group_arn = aws_lb_target_group.grupoLB.arn
+  }
+}
+
+resource "aws_autoscaling_policy" "escala-Producao" {
+  name = "terraform-escala"
+  autoscaling_group_name = var.nomeGrupo
+  policy_type = "TargetTrackingScaling"
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50.0
   }
 }
