@@ -35,6 +35,7 @@ resource "aws_launch_template" "maquina" {
   }
 
   security_group_names = [ var.sg_name ]
+  user_data = filebase64("playbook-prod-setup.sh")
 }
 
 resource "aws_key_pair" "chaveSSH" {
