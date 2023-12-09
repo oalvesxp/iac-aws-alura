@@ -1,0 +1,6 @@
+---
+  - hosts: dev
+    gather_facts: True
+
+    roles:
+      - dev-setup
