@@ -6,6 +6,10 @@ module "aws_dev" {
   sg_name = "grupo-dev"
   env_name = "Development"
   name = "dev"
+
+  nomeGrupo = "autoScalingDev"
+  minimo = 0
+  maximo = 3
 }
 
 output "ip" {

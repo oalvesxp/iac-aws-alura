@@ -21,3 +21,15 @@ variable "env_name" {
 variable "name" {
   type = string
 }
+
+variable "minimo" {
+  type = number
+}
+
+variable "maximo" {
+  type = number
+}
+
+variable "nomeGrupo" {
+  type = string
+}
