@@ -8,8 +8,10 @@ module "aws_dev" {
   name = "dev"
 
   nomeGrupo = "autoScalingDev"
-  minimo = 0
-  maximo = 3
+  minimo = 1
+  maximo = 1
+
+  producao = false
 }
 
 # output "ip" {

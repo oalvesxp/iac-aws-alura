@@ -35,7 +35,7 @@ resource "aws_launch_template" "maquina" {
   }
 
   security_group_names = [ var.sg_name ]
-  user_data = filebase64("playbook-prod-setup.sh")
+  user_data = var.producao ? ("playbook-prod-setup.sh") : ""
 }
 
 resource "aws_key_pair" "chaveSSH" {
@@ -56,7 +56,7 @@ resource "aws_autoscaling_group" "grupo" {
     id = aws_launch_template.maquina.id
     version = "$Latest"
   }
-  target_group_arns = [ aws_lb_target_group.grupoLB.arn ]
+  target_group_arns = var.producao ? [ aws_lb_target_group.grupoLB[0].arn ] : []
 }
 
 resource "aws_default_subnet" "subnet_1" {
@@ -71,6 +71,7 @@ resource "aws_lb" "loadBalancer" {
   internal = false
   subnets = [ aws_default_subnet.subnet_1.id, aws_default_subnet.subnet_2.id ]
   security_groups = [ aws_security_group.grupo-seguranca.id ]
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_default_vpc" "default" {
@@ -82,16 +83,18 @@ resource "aws_lb_target_group" "grupoLB" {
   port = "8000"
   protocol = "HTTP"
   vpc_id = aws_default_vpc.default.id
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_lb_listener" "entradaLB" {
-  load_balancer_arn = aws_lb.loadBalancer.arn
+  load_balancer_arn = aws_lb.loadBalancer[0].arn
   port = "8000"
   protocol = "HTTP"
   default_action {
     type = "forward"
-    target_group_arn = aws_lb_target_group.grupoLB.arn
+    target_group_arn = aws_lb_target_group.grupoLB[0].arn
   }
+  count = var.producao ? 1 : 0
 }
 
 resource "aws_autoscaling_policy" "escala-Producao" {
@@ -104,4 +107,5 @@ resource "aws_autoscaling_policy" "escala-Producao" {
     }
     target_value = 50.0
   }
+  count = var.producao ? 1 : 0
 }
