@@ -1,7 +1,0 @@
----
-  - hosts: prod
-    gather_facts: True
-
-    roles:
-      - git-clone
-      - prod-setup
