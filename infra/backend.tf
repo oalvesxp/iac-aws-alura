@@ -1,9 +1,9 @@
 terraform {
-################################################################
-## After running terraform apply (with local backend)
-## you will uncomment this code then rerun terraform init
-## to switch from local backend to remote aws backend
-################################################################
+  ################################################################
+  ## After running terraform apply (with local backend)
+  ## you will uncomment this code then rerun terraform init
+  ## to switch from local backend to remote aws backend
+  ################################################################
   # backend "s3" {
   #   bucket          = "tf-demo-831511089306-us-east-1"
   #   key             = "tf-infra/terraform.tfstate"
@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "this" {
       apply_server_side_encryption_by_default {
         sse_algorithm = "AES256"
       }
-    } 
+    }
   }
 
   tags = {
