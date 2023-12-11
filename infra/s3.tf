@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "deploy" {
-  bucket = "${var.repo_name}-deploy"
+  bucket = "${var.repo_name}-deploy7148"
 }
 
 resource "aws_s3_bucket_object" "docker" {
@@ -7,7 +7,7 @@ resource "aws_s3_bucket_object" "docker" {
     aws_s3_bucket.deploy
   ]
 
-  bucket = "${var.repo_name}-deploy"
+  bucket = "${var.repo_name}-deploy7148"
   key    = "${var.repo_name}.zip"
   source = "${var.repo_name}.zip"
 
