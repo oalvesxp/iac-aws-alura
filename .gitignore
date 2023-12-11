@@ -1,9 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform
 
-## Virtual env pre-commit ##
-venv/*
-
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
