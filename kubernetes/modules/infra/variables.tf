@@ -16,3 +16,16 @@ variable "public_subnets" {
   type        = list(string)
   default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 }
+
+## Variáveis para o repositório ECR
+variable "ecr_repo_name" {
+  description = "Nome do repositório ECR"
+  type        = string
+}
+
+## Variáveis para o EKS
+variable "cluster_name" {
+  description = "Nome do Cluster EKS"
+  type        = string
+  default     = "api-eks-cluster"
+}

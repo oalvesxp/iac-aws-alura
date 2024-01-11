@@ -15,16 +15,9 @@ module "backend" {
   source = "./modules/backend"
 }
 
-module "network" {
-  source = "./modules/vpc"
-}
-
-module "ecr" {
-  source = "./modules/ecr"
+module "infra" {
+  source = "./modules/infra"
 
   ecr_repo_name = local.ecr_repo_name
-}
-
-module "eks" {
-  source = "./modules/eks"
+  cluster_name  = local.cluster_name
 }
