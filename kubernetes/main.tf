@@ -3,14 +3,18 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.16"
+      version = ">= 5.31.0"
     }
   }
 
   required_version = ">= 1.2.0"
 }
 
-## Importando o módulo de backend externo
+## Importando módulos
 module "backend" {
   source = "./modules/backend"
+}
+
+module "network" {
+  source  = "./modules/vpc"
 }
