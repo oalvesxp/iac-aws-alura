@@ -16,11 +16,15 @@ module "backend" {
 }
 
 module "network" {
-  source  = "./modules/vpc"
+  source = "./modules/vpc"
 }
 
 module "ecr" {
-  source  = "./modules/ecr"
+  source = "./modules/ecr"
 
   ecr_repo_name = local.ecr_repo_name
+}
+
+module "eks" {
+  source = "./modules/eks"
 }
