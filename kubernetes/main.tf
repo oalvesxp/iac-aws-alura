@@ -18,3 +18,9 @@ module "backend" {
 module "network" {
   source  = "./modules/vpc"
 }
+
+module "ecr" {
+  source  = "./modules/ecr"
+
+  ecr_repo_name = local.ecr_repo_name
+}
